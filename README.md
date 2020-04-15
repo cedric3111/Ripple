@@ -53,4 +53,4 @@ It is exaplained that in order to avoid double spend, transactions must be proce
 See the code (Object GNUPlotBuilder, methods setAverage/setMin/SetMax)
 
 ### Bonus question #2
-
+Both the ledger and server_state methods have a "closing_time" attribute. This attribute could be used and compared to the previous closure in order to determine how long it took to close.
