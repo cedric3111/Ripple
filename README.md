@@ -32,14 +32,14 @@ While the *view* layer only contains Swing panels and other user facing componen
 As HTTP is a synchronous protocol, JSON RPC polling calls were pretty straight forward to implement. For this, I decided to use the native Java *HttpsURLConnection* object, which can be a bit slow but is easy to implement and is largely sufficient for small messages.
 
 ##### WebSockets
-Implementing WeSocket messages however, was much more complex. Thisis  mainly due to the fact that WS messages are asynchronous and therefore require a "listening" thread to intercept messages produced by the server. Additional logic was therefore required to pass the received message back to the main thread so the content of each request could be serialized into the plot file.
+Implementing WeSocket messages however, was much more complex. This is  mainly due to the fact that WS messages are asynchronous and therefore require a "listening" thread to intercept messages produced by the server. Additional logic was therefore required to pass the received message back to the main thread so the content of each request could be serialized into the plot file.
 
 ##### Maths functions
 As part of the bonus question, calculating the min, max and average were also challenging parts considering that the first and last transactions might not be complete. It was therefore necessary to remove them when calculating these figures in order to have more accurate calculations.
 
 ##### Polling interval:
 
-The polling interval was made configurable in order to easily be able to compare the results. As new validaated legers take generally between 3 and 6 seconds, the polling intervals options are 1, 3 and 6 in the application. The frequencies 1 and 3 seem to offer better results when calculating the average/min/max as they are quick enough to mitigate the risk of missing a transaction.
+The polling interval was made configurable in order to easily be able to compare the results. As new validated legers take generally between 3 and 6 seconds, the polling intervals options are 1, 3 and 6 seconds. The frequencies 1 and 3 seconds seem to offer better results when calculating the average/min/max as they are quick enough to mitigate the risk of missing a transaction. In fact 6 seconds polling frequency should not be used at all when calculating the average. I kept this interval purely for comparison purposes.
 
 ### Questions:
 
@@ -47,7 +47,7 @@ The polling interval was made configurable in order to easily be able to compare
 The results suggest that time required to validate a new ledger can vary.
 
 ### What might explain the variation in time between new ledgers?
-It is exaplained that in order to avoid double spend, transactions must be processed in a specific order. A consensus has to be reached by all the participants in order to ensure that this transaction order/grouping is agreed upon. As a consensus round can fail if no supermajority is clear from the received validation, the consensus round is "wasted" and a new round is required. This would result in losing a few seconds when generating that new ledger.
+It is exaplained that in order to avoid double spend, transactions must be processed in a specific order. A consensus has to be reached by all the participants in order to ensure that this transaction ordering/grouping is agreed upon. As a consensus round can fail if no supermajority is clear from the received validation, the current round is "wasted" and a new one is required. This would result in losing a few seconds when generating that new ledger.
 
 ### Bonus question #1
 See the code (Object GNUPlotBuilder, methods setAverage/setMin/SetMax)
