@@ -22,7 +22,7 @@ Once this is done, running the application is very simple and the user only need
 
 This application was implemented following a simplified version of the Model View Controller (MVC) design pattern. The below diagram attempts to summarize the technical architecture of the Java package and the various components:
 
-<p align="center"><img src="/docImages/architecture.png" width="650" height="400"></p>
+<p align="center"><img src="/docImages/architecture.png" width="850" height="400"></p>
 
 While the *view* layer only contains Swing panels and other user facing components, the *model* contains most of the logic. Specifically the HTTP Client  as well as the WebSocket Client objects responsible for establishing the communication between the app and the XRP ledger's public endpoints during the polling phases. The *model* also contains the logic to serialize the file as well as the Javaplot objects that are used to configure and build the plot with GNUPLOT. This is also where the logic for the  min, max and average features was implemented.
 
